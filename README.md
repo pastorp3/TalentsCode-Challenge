@@ -13,6 +13,7 @@ This is a coding challenge for Talens Code, Here are some of the main tasks:
 - Ruby on Rails 6
 - Ruby 3.0.0
 - yarn
+- Bootstrap 5
 
 ## Installation
 
