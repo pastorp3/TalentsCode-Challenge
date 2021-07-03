@@ -1,0 +1,16 @@
+<h1>Tables</h1>
+
+
+
+  <% @tables.each do |table| %>
+    <div class="card p-3 d-flex flex-row justify-content-evenly mb-3 mt-3">
+      <h4><%= table.title %></h4>
+      <span><%= link_to 'Show', table, class: 'btn btn-info' %></span>
+      <span><%= link_to 'Delete', table, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></span>
+    </div>
+  <% end %>
+  
+
+<br>
+
+<%= link_to 'New Table', new_table_path, class: 'btn btn-primary' %>

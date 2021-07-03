@@ -8,9 +8,18 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="container pt-3">
+    <% if user_signed_in? %>
+      <div class="text-end">
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-info' %>
+      </div>
+    <% end %>
+
+    <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
