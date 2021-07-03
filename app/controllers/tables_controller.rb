@@ -27,12 +27,12 @@ class TablesController < ApplicationController
     @table.user_id = current_user.id
     @table.save
     
-    CSV.foreach(params[:table][:file]) do |row|
+    #CSV.foreach(params[:table][:file]) do |row|
+    #  row = row[0].split(/(\t)/).select { |w| w != "\t" }
+    #  Row.create(buyer: row[0], item_description: row[1], item_price: row[2], item_total: row[3], seller_address: row[4], seller: row[5], table_id: @table.id)
+    #end
 
-      row = row[0].split(/(\t)/).select { |w| w != "\t" }
-      Row.create(buyer: row[0], item_description: row[1], item_price: row[2], item_total: row[3], seller_address: row[4], seller: row[5], table_id: @table.id)
-      
-    end
+    ImportTsv.new(params[:table][:file], @table.id).save
 
 
     respond_to do |format|
