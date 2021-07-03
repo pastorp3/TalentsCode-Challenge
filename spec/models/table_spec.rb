@@ -20,6 +20,12 @@ RSpec.describe Table, type: :model do
       table.user_id = nil
       expect(table).to_not be_valid
     end
+
+    it "It should pass if user association exist" do
+      table.user_id = user.id
+      expect(table.user).to eq(user)
+    end
+
   end
   
 end
