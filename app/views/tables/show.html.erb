@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h3>
   <%= @table.title %>
-</p>
+</h3>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th><%= @rows[0].buyer %></th>
@@ -19,7 +17,7 @@
   <tbody>
     <% @rows.each do |row| %>
       <% if row.buyer != "comprador" %>
-        <tr>
+        <tr class="table-primary">
           <th><%= row.buyer %></th>
           <th><%= row.item_description %></th>
           <th><%= row.item_price %></th>
@@ -33,5 +31,5 @@
 
 </table>
 
-<%= link_to 'Edit', edit_table_path(@table) %> |
+
 <%= link_to 'Back', tables_path %>

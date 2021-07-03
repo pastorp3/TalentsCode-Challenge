@@ -1,9 +1,10 @@
 class TablesController < ApplicationController
   before_action :set_table, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /tables or /tables.json
   def index
-    @tables = Table.all
+    @tables = current_user.tables
   end
 
   # GET /tables/1 or /tables/1.json
@@ -22,7 +23,9 @@ class TablesController < ApplicationController
 
   # POST /tables or /tables.json
   def create
-    @table = Table.create(table_params)
+    @table = Table.new(table_params)
+    @table.user_id = current_user.id
+    @table.save
     
     CSV.foreach(params[:table][:file]) do |row|
 
