@@ -65,6 +65,16 @@ If you click on the show button on the root page or after creating a table, you 
 
 ![talents_show_table](Images/TalentsShowTable.png)
 
+## Test
+
+Run the test suit
+
+```
+> $ rspec --format documentation
+```
+
+![talents_test](Images/TalentsTest.png)
+
 ## Author
 
 👤 **José Pedraza**
