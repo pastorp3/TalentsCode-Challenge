@@ -3,7 +3,7 @@
 This is a coding challenge for Talens Code, Here are some of the main tasks:
 
 - User Authentication
-- Allow User to upload csv and tsv files
+- Allow User to upload tsv files
 - Store uploaded files
 - Display data for each file
 - Test Suite
