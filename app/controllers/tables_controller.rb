@@ -8,6 +8,7 @@ class TablesController < ApplicationController
 
   # GET /tables/1 or /tables/1.json
   def show
+    @rows = @table.rows
   end
 
   # GET /tables/new
@@ -21,7 +22,15 @@ class TablesController < ApplicationController
 
   # POST /tables or /tables.json
   def create
-    @table = Table.new(table_params)
+    @table = Table.create(table_params)
+    
+    CSV.foreach(params[:table][:file]) do |row|
+
+      row = row[0].split(/(\t)/).select { |w| w != "\t" }
+      Row.create(buyer: row[0], item_description: row[1], item_price: row[2], item_total: row[3], seller_address: row[4], seller: row[5], table_id: @table.id)
+      
+    end
+
 
     respond_to do |format|
       if @table.save
@@ -49,6 +58,10 @@ class TablesController < ApplicationController
 
   # DELETE /tables/1 or /tables/1.json
   def destroy
+    @table.rows.each do |row|
+      row.destroy
+    end
+
     @table.destroy
     respond_to do |format|
       format.html { redirect_to tables_url, notice: "Table was successfully destroyed." }

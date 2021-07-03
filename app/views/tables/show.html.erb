@@ -5,5 +5,33 @@
   <%= @table.title %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th><%= @rows[0].buyer %></th>
+      <th><%= @rows[0].item_description %></th>
+      <th><%= @rows[0].item_price %></th>
+      <th><%= @rows[0].item_total %></th>
+      <th><%= @rows[0].seller_address %></th>
+      <th><%= @rows[0].seller %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rows.each do |row| %>
+      <% if row.buyer != "comprador" %>
+        <tr>
+          <th><%= row.buyer %></th>
+          <th><%= row.item_description %></th>
+          <th><%= row.item_price %></th>
+          <th><%= row.item_total %></th>
+          <th><%= row.seller_address %></th>
+          <th><%= row.seller %></th>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+
+</table>
+
 <%= link_to 'Edit', edit_table_path(@table) %> |
 <%= link_to 'Back', tables_path %>
